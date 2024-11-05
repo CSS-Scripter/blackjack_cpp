@@ -16,6 +16,7 @@ namespace Blackjack
     Result play();
     bool playerTurn(Player& player, Deck& deck);
     bool dealerTurn(Player& dealer, Deck& deck);
+    bool dealerTurn(Player& dealer, Deck& deck, int pointsToBeat);
     bool shouldHit();
 };
 

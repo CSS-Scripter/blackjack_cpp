@@ -24,7 +24,7 @@ Blackjack::Result Blackjack::play()
         return dealer_win;
     }
 
-    if (dealerTurn(dealer, deck))
+    if (dealerTurn(dealer, deck, player.score))
     {
         return player_win;
     }
@@ -53,9 +53,10 @@ bool Blackjack::playerTurn(Player& player, Deck& deck)
     return false;
 }
 
-bool Blackjack::dealerTurn(Player& dealer, Deck& deck)
+bool Blackjack::dealerTurn(Player& dealer, Deck& deck) { return Blackjack::dealerTurn(dealer, deck, Settings::dealerStandAt); }
+bool Blackjack::dealerTurn(Player& dealer, Deck& deck, int pointsToBeat)
 {
-        while (dealer.score < Settings::dealerStandAt)
+    while (dealer.score < pointsToBeat)
     {
         Card drawn = dealer.drawCard(deck);
         std::cout << "The dealer flips a " << drawn << ". They now have: " << dealer.score << '\n';
